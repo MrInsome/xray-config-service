@@ -15,7 +15,8 @@ The service requires systemd watchers to automatically restart Xray when the con
 
 Create the following systemd units:
 
-```/etc/systemd/system/xray-restart.service
+/etc/systemd/system/xray-restart.service
+```
 [Unit]
 Description=Restart Xray service on config change
 
@@ -24,7 +25,8 @@ Type=oneshot
 ExecStart=/usr/bin/systemctl restart xray
 ```
 
-```/etc/systemd/system/xray-restart.path
+/etc/systemd/system/xray-restart.path
+```
 [Unit]
 Description=Monitor Xray config for changes
 
@@ -35,7 +37,8 @@ PathModified=/usr/local/etc/xray/config.json
 WantedBy=multi-user.target
 ```
 
-```bash
+bash
+```
 systemctl daemon-reload
 systemctl enable xray-restart.path
 systemctl start xray-restart.path
